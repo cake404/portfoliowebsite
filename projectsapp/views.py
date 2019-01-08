@@ -1,7 +1,15 @@
 from django.shortcuts import render
 from .models import Project
+from django.views import generic
 
-def index(request):
-    project_list = Project.objects.all()
-    context = {'project_list':project_list}
-    return render(request, 'projectsapp/index.html', context)
+
+class IndexView(generic.ListView):
+    template_name = 'projectsapp/index.html'
+    context_object_name = 'project_list'
+
+    def get_queryset(self):
+        return Project.objects.all()
+
+class ProjectDetailView(generic.DetailView):
+    model = Project
+    template_name = 'projectsapp/project_detail.html'
