@@ -1,0 +1,32 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+<html>
+
+    <div id="container">
+
+        <div id="header">
+            <title>
+                {% block title %}Page Title{% endblock %}
+            </title>
+            <div id="branding">
+                <h1 id="site-name">
+                    Project Portfolio
+                </h1>
+            </div>
+        </div>
+
+        <div id="content">
+            <body>
+
+            {% block content %}   
+                Body content
+            {% endblock %}
+
+            </body>
+        </div>
+        <div id="footer"></div>
+
+    </div>
+</html>

@@ -1,5 +1,10 @@
-{% load static %}
+{% extends "main_template.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'projectsapp/css/style.css' %}">
+{% block title %}Project Detail{% endblock %}
+
+{% block content %}
 
 <h1>{{project}}</h1>
+
+{% endblock %}
+
