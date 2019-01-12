@@ -1,0 +1,42 @@
+#container {
+    font: 14px "Century Gothic", Futura, sans-serif;
+}
+
+#header {
+    background-color: #c0dfd9;
+    height: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+
+}
+#branding {
+    float: left;
+}
+
+#branding h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+    line-height: 1.2;
+    color: #3b3a36;
+}
+
+#options {
+    display: flex;
+    flex-direction: row;
+}
+
+.option {
+    color: #727c7a;
+}
+
+.option h1 {
+    font-weight: normal;
+    padding-right: 10px;
+    font-size: 15px;
+}
+
+body {
+    margin: 0px;
+    background-color: #e9ece5;
+}

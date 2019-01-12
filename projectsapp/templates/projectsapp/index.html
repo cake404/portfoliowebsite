@@ -6,13 +6,36 @@
 
 
 {% if project_list %}
-    <ul>
-    {% for project in project_list %}
-        <li><a href="/projects/{{ project.id }}/">{{ project.title }}</a></li>
-    {% endfor %}
-    </ul>
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Authors</th>
+                    <th scope="cole">Github Reponsitory</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in project_list %}
+                    <tr>
+                        <th scope="col">{{project.id}}</th>
+                        <th scope="col"><a href="{% url 'projectsapp:project_detail' project.id %}">{{project.title}}</a></th>
+                        <th scope="col">{{project.authors_string}}</th>
+                        <th scope="col">{{project.github_link}}</th>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+    </div>
+
 {% else %}
     <p>No projects are available.</p>
 {% endif %}
+
 
 {% endblock %}

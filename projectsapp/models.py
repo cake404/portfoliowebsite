@@ -16,3 +16,14 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+    def authors_string(self):
+        authors_text = ''
+        for author in self.authors.all():
+            authors_text += ', ' + author.__str__()
+        
+        if authors_text:
+            authors_text = authors_text[2:]
+        
+        return authors_text
+            
