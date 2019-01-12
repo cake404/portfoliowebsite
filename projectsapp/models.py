@@ -13,17 +13,12 @@ class Project(models.Model):
     description = models.CharField(max_length=255, blank=True)
     authors = models.ManyToManyField(Author, blank=True)
     github_link = models.CharField(max_length=255, blank=True)
+    is_school_project = models.BooleanField(default=False)
+    picture_url = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return self.title
 
     def authors_string(self):
-        authors_text = ''
-        for author in self.authors.all():
-            authors_text += ', ' + author.__str__()
-        
-        if authors_text:
-            authors_text = authors_text[2:]
-        
-        return authors_text
+        return ', '.join([author.__str__() for author in self.authors.all()])
             

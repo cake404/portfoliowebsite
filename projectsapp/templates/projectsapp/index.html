@@ -3,39 +3,45 @@
 {% block title %}Projects{% endblock %}
 
 {% block content %}
+{% load static %}
 
-
-{% if project_list %}
-    <div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
-    <div class="col-md-12">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Authors</th>
-                    <th scope="cole">Github Reponsitory</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for project in project_list %}
+        <!-- Table View -->
+        <div class="col-md-6">
+            <table id="projects_table" class="table display">
+                <thead>
                     <tr>
-                        <th scope="col">{{project.id}}</th>
-                        <th scope="col"><a href="{% url 'projectsapp:project_detail' project.id %}">{{project.title}}</a></th>
-                        <th scope="col">{{project.authors_string}}</th>
-                        <th scope="col">{{project.github_link}}</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Authors</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for project in project_list %}
+                        <tr>
+                            <th class="image_trigger" id="{{project.picture_url}}" scope="col">{{project.id}}</th>
+                            <th scope="col"><a href="{% url 'projectsapp:project_detail' project.id %}">{{project.title}}</a></th>
+                            <th scope="col">{{project.authors_string}}</th>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- Picture of Hovered over project -->
+        <div class="col-md-6" id="project_image">
+        </div>
     </div>
-    </div>
-    </div>
+</div>
 
-{% else %}
-    <p>No projects are available.</p>
-{% endif %}
-
-
+<script type="text/javascript">
+$( "tbody tr" ).hover(
+  function() {
+      var url = $(this).find('.image_trigger').attr('id')
+    $( "#project_image" ).append("<img src=" + url + " class='img-thumbnail'>");
+  }, function() {
+    $( "#project_image" ).find('img').remove();
+  }
+);
+</script>
 {% endblock %}
