@@ -5,11 +5,14 @@
 {% block content %}
 {% load static %}
 
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
 <div class="container-fluid">
     <div class="row">
         <!-- Table View -->
-        <div class="col-md-6">
-            <table id="projects_table" class="table display">
+        <div class="col-md-6" background-color="blue">
+            <table id="projects_table" class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -19,8 +22,8 @@
                 </thead>
                 <tbody>
                     {% for project in project_list %}
-                        <tr>
-                            <th class="image_trigger" id="{{project.picture_url}}" scope="col">{{project.id}}</th>
+                        <tr class="image_trigger" url="{{project.picture_url}}" >
+                            <th scope="col">{{project.id}}</th>
                             <th scope="col"><a href="{% url 'projectsapp:project_detail' project.id %}">{{project.title}}</a></th>
                             <th scope="col">{{project.authors_string}}</th>
                         </tr>
@@ -29,19 +32,31 @@
             </table>
         </div>
         <!-- Picture of Hovered over project -->
-        <div class="col-md-6" id="project_image">
+        <div class="col-md-6 text-center" id="project_image">
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-$( "tbody tr" ).hover(
+
+$( document ).ready(function() {
+    $('#projects_table').DataTable({
+        "paging": "simple",
+        "pageLength": 10,
+        "lengthChange": false,
+    });
+
+    $('.dataTables_length').addClass('bs-select');
+});
+
+$( ".image_trigger" ).hover(
   function() {
-      var url = $(this).find('.image_trigger').attr('id')
-    $( "#project_image" ).append("<img src=" + url + " class='img-thumbnail'>");
+      var url = $(this).attr('url')
+    $( "#project_image" ).append("<img src=" + url + " class='img-fluid rounded' width='80%' height='80%'>");
   }, function() {
     $( "#project_image" ).find('img').remove();
   }
 );
+
 </script>
 {% endblock %}
