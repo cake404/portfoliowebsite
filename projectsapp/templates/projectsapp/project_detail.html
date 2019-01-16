@@ -3,8 +3,53 @@
 {% block title %}Project Detail{% endblock %}
 
 {% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Attributes Table -->
+        <div class="col-md-6">
+            <div class="card card-body">
+            <table id="project_table" class="table table-striped">
+                <tbody>                        
+                    <tr >
+                        <th scope="col">ID</th>
+                        <td scope="col">{{project.id}}</td>
 
-<h1>{{project}}</h1>
+                    </tr>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <td scope="col">{{project.title}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Description</th>
+                        <td scope="col"><p>{{project.description}}<description></description></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Authors</th>
+                        <td scope="col"><p>{{project.authors}}<description></description></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <!-- Image -->
+        <div class="col-md-6 text-center">
+            <img src="{{project.picture_url}}" class='img-fluid rounded' width='80%' height='80%'>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+    $( ".image_trigger" ).hover(
+      function() {
+          var url = $(this).attr('url')
+        $( "#project_image" ).append("<img src=" + url + " class='img-fluid rounded' width='80%' height='80%'>");
+      }, function() {
+        $( "#project_image" ).find('img').remove();
+      }
+    );
+    
+    </script>
 
 {% endblock %}
 

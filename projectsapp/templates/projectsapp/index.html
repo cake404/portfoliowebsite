@@ -1,17 +1,19 @@
 {% extends "main_template.html" %}
 
+{% load static %}
+
+{% block css %}
+<!-- MDBootstrap Datatables  -->
+<link href="{% static 'mdb/css/addons/datatables.min.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block title %}Projects{% endblock %}
 
 {% block content %}
-{% load static %}
-
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-
 <div class="container-fluid">
     <div class="row">
         <!-- Table View -->
-        <div class="col-md-6" background-color="blue">
+        <div class="col-md-6">
             <table id="projects_table" class="table table-hover">
                 <thead>
                     <tr>
@@ -23,40 +25,50 @@
                 <tbody>
                     {% for project in project_list %}
                         <tr class="image_trigger" url="{{project.picture_url}}" >
-                            <th scope="col">{{project.id}}</th>
-                            <th scope="col"><a href="{% url 'projectsapp:project_detail' project.id %}">{{project.title}}</a></th>
-                            <th scope="col">{{project.authors_string}}</th>
+                            <td scope="col">{{project.id}}</td>
+                            <td scope="col"><a href="{% url 'projectsapp:project_detail' project.id %}">{{project.title}}</a></td>
+                            <td scope="col">{{project.authors_string}}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
         <!-- Picture of Hovered over project -->
-        <div class="col-md-6 text-center" id="project_image">
+        <div class="col-md-6 text-center">
+            <div class="well well-sm" id="project_image">
+                
+            </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<!-- MDBootstrap Datatables  -->
+<script type="text/javascript" src="{% static 'mdb/js/addons/datatables.min.js' %}"></script>
 
 <script type="text/javascript">
 
-$( document ).ready(function() {
-    $('#projects_table').DataTable({
-        "paging": "simple",
-        "pageLength": 10,
-        "lengthChange": false,
+    $( document ).ready(function() {
+        $('#projects_table').DataTable({
+            "paging": "simple",
+            "pageLength": 10,
+            "lengthChange": false,
+            "ordering": false,
+            "searching": false,
+        });
+    
+        $('.dataTables_length').addClass('bs-select');
     });
-
-    $('.dataTables_length').addClass('bs-select');
-});
-
-$( ".image_trigger" ).hover(
-  function() {
-      var url = $(this).attr('url')
-    $( "#project_image" ).append("<img src=" + url + " class='img-fluid rounded' width='80%' height='80%'>");
-  }, function() {
-    $( "#project_image" ).find('img').remove();
-  }
-);
-
+    
+    $( ".image_trigger" ).hover(
+      function() {
+          var url = $(this).attr('url')
+        $( "#project_image" ).append("<img src=" + url + " class='img-fluid rounded' width='80%' height='80%'>");
+      }, function() {
+        $( "#project_image" ).find('img').remove();
+      }
+    );
+    
 </script>
 {% endblock %}

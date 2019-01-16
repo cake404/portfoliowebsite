@@ -22,3 +22,5 @@ class Project(models.Model):
     def authors_string(self):
         return ', '.join([author.__str__() for author in self.authors.all()])
             
+    def fields(self):
+        return [f.name.replace("_", " ").title() for f in self._meta.get_fields()]

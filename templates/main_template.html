@@ -1,10 +1,15 @@
 {% load static %}
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<!-- Bootstrap core CSS -->
+<link href="{% static 'mdb/css/bootstrap.min.css' %}" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="{% static 'mdb/css/mdb.min.css' %}" rel="stylesheet">
+<!-- Custom css -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+{% block css %}{% endblock %}
+
+
 <html>
 <body>
     <main role="main">
@@ -28,11 +33,20 @@
         </nav>
 
         <div style="padding-top: 20px">
-            {% block content %}   
-                Body content
-            {% endblock %}
+            {% block content %}{% endblock %}
         </div>
     </main>
 
 </body>
+
+
+<!-- SCRIPTS -->
+
+<!-- Jquery Script -->
+<script type="text/javascript" src="{% static 'mdb/js/jquery-3.3.1.min.js' %}"></script>
+<!-- Bootstrap script -->
+<script type="text/javascript" src="{% static 'mdb/js/bootstrap.min.js' %}"></script>
+
+
+{% block scripts %}{% endblock %}
 </html>
