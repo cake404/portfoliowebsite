@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Project
+from .models import Project, Author
 from django.views import generic
 
 
@@ -13,3 +13,7 @@ class IndexView(generic.ListView):
 class ProjectDetailView(generic.DetailView):
     model = Project
     template_name = 'projectsapp/project_detail.html'
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
+    template_name = 'projectsapp/author_detail.html'
