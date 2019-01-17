@@ -1,0 +1,27 @@
+.with-padding {
+    padding-top: 20px;
+}
+
+.right-line {
+    border-right: 1px solid rgba(0,0,0,.1);
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+}
+
+.bg {
+    background-image: url("https://res.cloudinary.com/cake404/image/upload/v1547741681/close-up-code.jpg");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.empty-col {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
