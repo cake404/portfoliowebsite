@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row with-padding">
         <!-- Table View -->
-        <div class="col-md-6">
+        <div class="col-md-5">
             <div class="card card-body">
                 <table id="projects_table" class="table table-hover">
                     <thead>
@@ -25,9 +25,14 @@
                     </thead>
                     <tbody>
                         {% for project in project_list %}
-                            <tr class="image_trigger" url="{{project.picture_url}}" >
+                            <!-- <tr class="image_trigger" url="{{project.picture_url}}" >
                                 <td scope="col">{{project.id}}</td>
-                                <td scope="col"><a href="{% url 'projectsapp:project_detail' project.id %}">{{project.title}}</a></td>
+                                <td scope="col"><a href="">{{project.title}}</a></td>
+                                <td scope="col">{{project.authors_string}}</td>
+                            </tr> -->
+                            <tr class="info_trigger" url="{{project.picture_url}}" id="{{project.id}}">
+                                <td scope="col">{{project.id}}</td>
+                                <td scope="col">{{project.title}}</td>
                                 <td scope="col">{{project.authors_string}}</td>
                             </tr>
                         {% endfor %}
@@ -36,10 +41,8 @@
             </div>
         </div>
         <!-- Picture of Hovered over project -->
-        <div class="col-md-6 text-center">
-            <div class="well well-sm">
-                    "<img class='img-fluid rounded' width='80%' height='80%' id="project_image">"
-            </div>
+        <div class="col-md-7 text-center" id="project-details-view">
+ 
         </div>
     </div>
 </div>
@@ -61,20 +64,44 @@
         });
     
         $('.dataTables_length').addClass('bs-select');
-    });
-    
-    $( ".image_trigger" ).hover(
-      function() {
-          var url = $(this).attr('url')
-        $( "#project_image" ).hide().attr('src', url).fadeIn(200);
-      }, function() {
-        $( "#project_image" ).attr('src', '');
-      }
-    );
 
-    function onLoadImage() {
-        console.log("onloading");
-    };
+    });
+
+    $( ".info_trigger").click( function() {
+        $.getJSON({
+           url: "{% url 'projectsapp:project_details' %}",  
+           data: {id: $(this).attr('id')},
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .done(function(data) {
+
+            $("#project-details-view").find('.card').remove();
+
+
+            $("#project-details-view").append(
+                `<div class="card" style="display:none">
+                    <img class="card-img-top" src=${data['image_url']}  alt="Card image cap">
+                    <div class="card-body">
+                        <div class="card-title">${data["title"]}</div>
+                        <div class="card-text">${data['description']}</div>
+                    </div>
+                </div>`
+            );
+
+            $('#project-details-view').find('.card').addClass('fadeInRight animated').show();
+            
+        });
+
+    });
+
+        // function() {
+        //     $('#card-info').removeClass('fadeInRight animated').addClass('fadeInRight animated').show().on('animationend', function () {
+        //         $(this).removeClass('fadeInRight animated');
+        //     });
+        // }
+
     
 </script>
 {% endblock %}

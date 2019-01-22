@@ -2,7 +2,6 @@
 
 <head>
 {% load static %}
-
 <!-- Bootstrap core CSS -->
 <link href="{% static 'mdb/css/bootstrap.min.css' %}" rel="stylesheet">
 <!-- Material Design Bootstrap -->
@@ -33,6 +32,9 @@
         <nav class="navbar custom-primary-dark">
             <ul class="nav nav-pills">
                 <li class="nav-item">
+                    <a class="nav-link text-white" id="home-pill" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link text-white" id="projects-pill" href="{% url 'projectsapp:index' %}">Projects</a>
                 </li>
             </ul>
@@ -58,10 +60,12 @@ var path_name = location.pathname;
 var active_pill = '#';
 if (path_name.includes('projects')) {
     active_pill += 'projects-pill';
+} 
+else if (path_name == '/') {
+    active_pill += 'home-pill';
 }
 
 $(active_pill).addClass('active');
-
 </script>
 
 </html>
