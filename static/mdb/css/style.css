@@ -1,5 +1,7 @@
+
+
 #title {
-    padding: 4rem 2rem;
+    padding: 2rem 1rem;
 }
 
 .with-padding {
@@ -17,7 +19,7 @@
 }
 
 .bg {
-    background-image: url("https://res.cloudinary.com/cake404/image/upload/v1547741681/close-up-code.jpg");
+    background-image: url("https://res.cloudinary.com/cake404/image/upload/v1548124111/serverroom.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -28,6 +30,32 @@
     float: none; /* Added */
     margin-bottom: 10px; /* Added */
 }
-/* PRIMARY BLUE #18a5dd */
-/* SECONDARY ORANGE #f7832c */
+
+/* .pagination .page-item.active .page-link { background-color: #37474F; }
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item.active .page-link:focus {
+background-color: #37474F;
+}
+
+.pagination .page-item.active .page-link:hover {
+background-color: #37474F;
+} */
+
+.custom-primary {
+    background-color: #37474F;
+}
+
+.custom-primary-dark {
+    background-color: #263238
+    ;
+}
+
+/* primary color
+#37474F
+
+
+primary color dark
+#263238
+*/
+
 

@@ -37,8 +37,8 @@
         </div>
         <!-- Picture of Hovered over project -->
         <div class="col-md-6 text-center">
-            <div class="well well-sm" id="project_image">
-                
+            <div class="well well-sm">
+                    "<img class='img-fluid rounded' width='80%' height='80%' id="project_image">"
             </div>
         </div>
     </div>
@@ -66,11 +66,15 @@
     $( ".image_trigger" ).hover(
       function() {
           var url = $(this).attr('url')
-        $( "#project_image" ).append("<img src=" + url + " class='img-fluid rounded' width='80%' height='80%'>");
+        $( "#project_image" ).hide().attr('src', url).fadeIn(200);
       }, function() {
-        $( "#project_image" ).find('img').remove();
+        $( "#project_image" ).attr('src', '');
       }
     );
+
+    function onLoadImage() {
+        console.log("onloading");
+    };
     
 </script>
 {% endblock %}
