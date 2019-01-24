@@ -13,10 +13,6 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Project.objects.all()
 
-class ProjectDetailView(generic.DetailView):
-    model = Project
-    template_name = 'projectsapp/project_detail.html'
-
 class AuthorDetailView(generic.DetailView):
     model = Author
     template_name = 'projectsapp/author_detail.html'
@@ -27,10 +23,10 @@ def get_project_details(request):
     project_json = {
         'id' : project.id,
         'title' : project.title,
-        'Authors' : project.authors_string(),
+        'authors' : project.authors_string(),
         'description' : project.description, 
         'is_school_project' : project.is_school_project,
-        'image_url' : project.picture_url
+        'picture_url' : project.picture_url
     }
     return JsonResponse(project_json)
 
