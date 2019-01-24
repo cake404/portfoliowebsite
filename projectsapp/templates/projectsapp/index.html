@@ -42,7 +42,31 @@
         </div>
         <!-- Picture of Hovered over project -->
         <div class="col-md-7 text-center" id="project-details-view">
- 
+            {% with project_list|first as project %}
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-left">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h3>Authors</h3>
+                            </div>
+                            <div class="col-md-8">
+                                <p>{{project.authors_string}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h3>Description</h3>
+                            </div>
+                            <div class="col-md-8">
+                                <p>{{project.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endwith %}
         </div>
     </div>
 </div>
@@ -73,7 +97,7 @@
            data: {id: $(this).attr('id')},
         })
         .fail(function() {
-            console.log("error");
+            console.log("error retrieving data");
         })
         .done(function(data) {
 
@@ -82,7 +106,6 @@
 
             $("#project-details-view").append(
                 `<div class="card" style="display:none">
-                    <img class="card-img-top" src=${data['image_url']}  alt="Card image cap">
                     <div class="card-body">
                         <div class="card-title">${data["title"]}</div>
                         <div class="card-text">${data['description']}</div>
@@ -95,13 +118,6 @@
         });
 
     });
-
-        // function() {
-        //     $('#card-info').removeClass('fadeInRight animated').addClass('fadeInRight animated').show().on('animationend', function () {
-        //         $(this).removeClass('fadeInRight animated');
-        //     });
-        // }
-
     
 </script>
 {% endblock %}
