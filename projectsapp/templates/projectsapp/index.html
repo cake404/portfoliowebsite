@@ -23,7 +23,7 @@
                     </thead>
                     <tbody>
                         {% for project in project_list %}
-                            <tr class="info_trigger" url="{{project.picture_url}}" id="{{project.id}}">
+                            <tr class="info_trigger" url="{{project.image_url}}" id="{{project.id}}">
                                 <td scope="col">{{project.title}}</td>
                             </tr>
                         {% endfor %}
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <img src="{{project.picture_url}}" class="rounded z-depth-2" width="100%" >
+                            <img src="{{project.image_url}}" class="rounded z-depth-2" width="100%" >
                         </div>
                     </div>
                     <hr>
@@ -106,17 +106,17 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="${data['picture_url']}" class="rounded z-depth-1" width="100%">
+                                <img src="${data['image_url']}" class="rounded z-depth-1" width="100%">
                             </div>
                         </div>
                         <hr>
                         <div class="text-left">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <h5>Authors</h5>
+                                    <h5>---</h5>
                                 </div>
                                 <div class="col-md-8">
-                                    <p>${data['authors']}</p>
+                                    <p>---</p>
                                 </div>
                             </div>
                             <div class="row">
