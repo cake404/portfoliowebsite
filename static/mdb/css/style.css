@@ -4,7 +4,7 @@
     padding: 2rem 1rem;
 }
 
-#project-card h3  {
+#project-card .project-card-text {
     font-weight: 300;
 }
 
