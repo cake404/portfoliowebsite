@@ -1,13 +1,19 @@
 from django.db import models
 
+class Technology(models.Model):
+    name = models.CharField(max_length=50)
+    tech_type = models.CharField(max_length=100, blank=True)
+    link = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.name
+
 class Project(models.Model):
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=255, blank=True)
     github_link = models.CharField(max_length=255, blank=True)
     image_url = models.CharField(max_length=255, blank=True)
+    technologies = models.ManyToManyField(Technology, blank=True)
 
     def __str__(self):
         return self.title
-            
-    def fields(self):
-        return [f.name.replace("_", " ").title() for f in self._meta.get_fields()]

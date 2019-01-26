@@ -8,6 +8,11 @@
     font-weight: 300;
 }
 
+#project-card ul {
+    list-style-type: circle;
+    padding-left: 0px;
+}
+
 .with-padding {
     padding-top: 20px;
 }

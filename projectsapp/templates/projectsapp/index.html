@@ -33,36 +33,6 @@
         </div>
         <!-- Picture of Hovered over project -->
         <div class="col-md-8 text-center" id="project-details-view">
-            {% with project_list|first as project %}
-            <div class="card">
-                <div class="card-body" id="project-card">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h3 class="project-card-text">{{project.title}}</h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <h5 class="project-card-text">Technology</h5>
-                                </div>
-                                <div class="col-sm-8"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <img src="{{project.image_url}}" class="rounded z-depth-2" width="100%" >
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="project-card-text">{{project.description}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endwith %}
         </div>
     </div>
 </div>
@@ -88,6 +58,19 @@
 
     });
 
+    function createTechDisplay(tech) {
+        if (tech == undefined || tech.length == 0) {
+            return "";
+        }
+
+        var tech_list = `<ul class="project-card-text">`;
+        for (var i = 0; i < tech.length; i++) {
+            tech_list += `<li>${tech[i]}</li>`;
+        }
+        tech_list += `</ul>`;
+        return tech_list;
+    }
+
     $( ".info_trigger").click( function() {
         $.getJSON({
            url: "{% url 'projectsapp:project_details' %}",  
@@ -102,30 +85,39 @@
 
 
             $("#project-details-view").append(
-                `<div class="card" style="display:none">
-                    <div class="card-body">
+                `<div class="card">
+                    <div class="card-body" id="project-card">
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="${data['image_url']}" class="rounded z-depth-1" width="100%">
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 class="project-card-text">${data['title']}</h3>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h5 class="project-card-text">Technology</h5>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        ${createTechDisplay(data['technologies'])}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="${data['image_url']}" class="rounded z-depth-2" width="100%" >
                             </div>
                         </div>
                         <hr>
-                        <div class="text-left">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h5>---</h5>
-                                </div>
-                                <div class="col-md-8">
-                                    <p>---</p>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="project-card-text">${data['description']}</p>
                             </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h5>Description</h5>
-                                </div>
-                                <div class="col-md-8">
-                                    <p>${data['description']}</p>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 text-right">
+                                <a class="btn btn-primary btn-md" href="${data['github_link']}" target="blank">GitHub Repository</a>
                             </div>
                         </div>
                     </div>
