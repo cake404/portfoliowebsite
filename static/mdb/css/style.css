@@ -8,9 +8,10 @@
     font-weight: 300;
 }
 
-#project-card ul {
+ul.dashed {
     list-style-type: circle;
-    padding-left: 0px;
+    list-style-position: outside;
+    text-align: left;
 }
 
 .with-padding {

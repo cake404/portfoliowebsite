@@ -15,7 +15,7 @@
         <!-- Table View -->
         <div class="col-md-4">
             <div class="card card-body">
-                <table id="projects_table" class="table table-hover  text-center">
+                <table id="projects_table" class="table table-hover text-center">
                     <thead>
                         <tr>
                             <th scope="col"><h3>Projects</h3></th>
@@ -63,11 +63,11 @@
             return "";
         }
 
-        var tech_list = `<ul class="project-card-text">`;
+        var tech_list = `<table id="tech-table" class="table table-hover table-borderless">`;
         for (var i = 0; i < tech.length; i++) {
-            tech_list += `<li>${tech[i]}</li>`;
+            tech_list += `<tr><td scope="col">${tech[i]}</td></tr>`;
         }
-        tech_list += `</ul>`;
+        tech_list += `</table>`;
         return tech_list;
     }
 
@@ -98,7 +98,7 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-sm-5">
-                                        <h5 class="project-card-text">Technology</h5>
+                                        <h5 class="project-card-text" style="padding-top: .75rem">Technology</h5>
                                     </div>
                                     <div class="col-sm-7">
                                         ${createTechDisplay(data['technologies'])}
