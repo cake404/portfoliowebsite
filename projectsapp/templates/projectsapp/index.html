@@ -31,8 +31,50 @@
                 </table>
             </div>
         </div>
-        <!-- Picture of Hovered over project -->
-        <div class="col-md-8 text-center" id="project-details-view">
+
+        <!-- Details of Hovered over project -->
+        <div class="col-md-8 text-center">
+            <div class="card" id="project-details-card" style="display:none">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3 class="project-card-text" id="project-details-card-title"></h3>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h5 class="project-card-text" style="padding-top: .75rem">Technology</h5>
+                                </div>
+                                <div class="col-sm-7">
+                                    <table id="tech-table" class="table table-hover">
+                                        <tr>
+                                            <td>TEST</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <img class="rounded z-depth-2" width="100%" id="project-image" >
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="project-card-text" id="project-description"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-right">
+                            <a class="btn btn-primary btn-md" target="blank" id="github-link">GitHub Repository</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -58,19 +100,6 @@
 
     });
 
-    function createTechDisplay(tech) {
-        if (tech == undefined || tech.length == 0) {
-            return "";
-        }
-
-        var tech_list = `<table id="tech-table" class="table table-hover table-borderless">`;
-        for (var i = 0; i < tech.length; i++) {
-            tech_list += `<tr><td scope="col">${tech[i]}</td></tr>`;
-        }
-        tech_list += `</table>`;
-        return tech_list;
-    }
-
     $( ".info_trigger").click( function() {
         $.getJSON({
            url: "{% url 'projectsapp:project_details' %}",  
@@ -81,52 +110,32 @@
         })
         .done(function(data) {
 
-            $("#project-details-view").find('.card').remove();
+            $('#project-details-card').hide();
+
+            $('#project-details-card-title').text(data['title']);
+
+            $('#project-image').attr('src', data['image_url']);
+
+            $('#project-description').text(data['description']);
+
+            $('#github-link').attr('href', data['github_link']);
+
+            $('#tech-table').find('tr').remove();
+            
+            for(var i = 0; i < data['technologies'].length; i++) {
+                $("#tech-table").append("<tr><td>" + data['technologies'][i] + "</td></tr>");
+            }
 
 
-            $("#project-details-view").append(
-                `<div class="card">
-                    <div class="card-body" id="project-card">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h3 class="project-card-text">${data['title']}</h3>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <h5 class="project-card-text" style="padding-top: .75rem">Technology</h5>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        ${createTechDisplay(data['technologies'])}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <img src="${data['image_url']}" class="rounded z-depth-2" width="100%" >
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="project-card-text">${data['description']}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 text-right">
-                                <a class="btn btn-primary btn-md" href="${data['github_link']}" target="blank">GitHub Repository</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>`
-            );
-
-            $('#project-details-view').find('.card').addClass('fadeInRight animated').show();
+            $('#project-details-card').addClass('fadeInRight fast animated').show()
+                .one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
+                function(event) {
+                    $(this).removeClass('fadeInRight animated');
+                });
             
         });
+
+
 
     });
     
