@@ -8,6 +8,10 @@ class Technology(models.Model):
     def __str__(self):
         return self.name
 
+    def attributes(self):
+        return {'name': self.name, 'tech_type': self.tech_type, 'link': self.link}
+
+
 class Project(models.Model):
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=255, blank=True)

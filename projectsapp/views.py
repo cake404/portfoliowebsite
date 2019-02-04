@@ -22,7 +22,7 @@ def get_project_details(request):
         'description' : project.description, 
         'image_url' : project.image_url,
         'github_link' : project.github_link,
-        'technologies' : [tech.__str__() for tech in project.technologies.all()]
+        'technologies' : [tech.attributes() for tech in project.technologies.all()]
     }
     return JsonResponse(project_json)
 
