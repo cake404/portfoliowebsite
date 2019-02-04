@@ -120,10 +120,14 @@
             
             // Add rows to the technologies table for the project card
             for(var i = 0; i < data['technologies'].length; i++) {
+                var tech_type = data['technologies'][i]['tech_type'];
+                var link = data['technologies'][i]['link'];
+                var name = data['technologies'][i]['name'];
+                
                 $("#tech-table").append("<tr class='tech-info-trigger'"
-                + "data-toggle='popover' title='" +  data['technologies'][i]['tech_type'] 
-                + "' data-content='" + create_tech_button(data['technologies'][i]['link']) + "'>"
-                + "<td scope='col'>" + data['technologies'][i]['name'] + "</td></tr>");
+                + "data-toggle='popover' title='" +  tech_type
+                + "' data-content='" + create_tech_button(link, name) + "'>"
+                + "<td scope='col'>" + name + "</td></tr>");
             }
 
             // Enable pop-overs for each of the tech row items
@@ -151,8 +155,8 @@
         }
     });
 
-    function create_tech_button(link) {
-        return '<a class="btn btn-primary btn-md btn-block" target="blank" href=' + link + '>Website</a>';
+    function create_tech_button(link, name) {
+        return '<a class="btn btn-primary btn-md btn-block" target="blank" href=' + link + '>' + name + ' Website</a>';
     };
 
 </script>
