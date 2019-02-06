@@ -4,10 +4,10 @@
     padding: 2rem 1rem;
 }
 
-#project-details-card .project-card-text {
+.card, .card .card-body h1, .card .card-body h2 , .card .card-body h3,
+.card .card-body h4, .card .card-body h5, .card .card-body h6  {
     font-weight: 300;
 }
-
 
 #projects_table .sorting_disabled {
     cursor: default;
