@@ -8,16 +8,59 @@
 
 {% block content %}
 <div class="container">
+    <!-- Intro row -->
     <div class="row with-padding">
         <div class="col-md-4">
             <img class="rounded z-depth-2" width="100%" src="https://res.cloudinary.com/cake404/image/upload/v1547279950/cat_3.jpg" >
         </div>
         <div class="col-md-8">
+            <div class="card card-body">
+                <h3 class="card-title">Hello, World!</h3>
+                <hr>
+                <p>Welcome to my portfolio website! This is a display of my programming experience that I have gathered
+                through school and personal projects. This website was designed and implemented by me using the Django Framework
+                and deployed using Amazon Web Services.</p>
+            </div>
+        </div>
+    </div>
+    <!-- About Me row -->
+    <div class="row with-padding">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title thin-title">Hello, World!</h3>
+                    <h3 class="card-title">About Me</h3>
                     <hr>
-                    <p>Welcome to my portfolio website!</p>
+                    <p>My name is Jacob, and I am student of Computer Science at NC State. I am a senior that is graduating in May 2019, 
+                    and I'm in the market looking for a fulfilling software engineering position.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons to chane the card views -->
+    <div class="row with-padding">
+        <div class="col-md-6">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary" value="skills">Skills</button>
+                <button type="button" class="btn btn-primary" value="experiences">Experiences</button>
+            </div>        
+        </div>
+    </div>
+    <!-- Card views -->
+    <div class="row with-padding">
+        <div class="col-md-6">
+            <div id="cards-holder">
+                <!-- Skills card -->
+                <div id="card-skills" class="card card-body">
+                    <div class="card-title"><h3>Skills</h3></div> 
+                    <hr>
+                    <p>This is a list of my skills</p>                   
+                </div>
+
+                <div id="card-experiences" class="card card-body" style="display:none">
+                    <div class="card-title"><h3>Experiences</h3></div> 
+                    <hr>
+                    <p>This is a list of my Expereinces</p>                   
                 </div>
             </div>
         </div>
@@ -25,6 +68,34 @@
 </div>
 {% endblock %}
 
-{% block scripts %}{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+    // Ready the document
+    $( document ).ready(function() {
+        // Initial state of the cards section
+        window.cur_card = "skills";
+    });
+
+    // Change card view based on the button that is clicked
+    $(".btn-group .btn").click( function() {
+
+        // Fade out current card 
+        $('#card-' + window.cur_card).hide();
+
+        var next_card = $(this).val();
+
+        // Fade in the next card
+        $('#card-' + next_card).addClass('fadeIn fast animated').show()
+            .one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
+            function(event) {
+                $(this).removeClass('fadeIn animated');
+        });
+
+        window.cur_card = next_card;
+        
+    })
+
+</script>
+{% endblock %}
 
 
