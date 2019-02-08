@@ -8,27 +8,27 @@
 <link href="{% static 'mdb/css/mdb.min.css' %}" rel="stylesheet">
 <!-- Custom css -->
 <link rel="stylesheet" type="text/css" href="{% static 'mdb/css/style.css' %}">
+<!-- FontAwesome css -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 {% block css %}{% endblock %}
 </head>
 
 <body class="custom-primary">
+
     <header>
-        <div class="row">
-            <!--Grid column-->
-            <div class="col-md-12">
-                <div class="card card-image bg text-white">
-                    <div class="d-flex align-items-center justify-content-center rgba-black-strong" id="title">
-                        <div class="col-sm-4 text-center">
-                                <h1>Jacob Struckmeyer</h1>
-                                <hr>
-                                <h3>Website Portfolio</h3>
-                        </div>
-                    </div>
+        <!-- Website title-->
+        <div class="card card-image bg text-white">
+            <div class="d-flex align-items-center justify-content-center rgba-black-strong" id="title">
+                <div class="col-sm-4 text-center">
+                    <h1>Jacob Struckmeyer</h1>
+                    <hr>
+                    <h3>Website Portfolio</h3>
                 </div>
             </div>
         </div>
 
+        <!-- Navbar -->
         <nav class="navbar custom-primary-dark">
             <ul class="nav nav-pills">
                 <li class="nav-item">
@@ -43,6 +43,19 @@
     <main>
         {% block content %}{% endblock %}
     </main>
+
+    <!-- Hidden row to base the social media bar on -->
+    <div class="row" id="hidden-row"></div>
+
+
+    <!-- Social media buttons -->
+    <div class="card card-body" id="social-media-bar">
+        <div class="d-flex flex-column">
+            <a href="https://github.com/cake404" target="blank"><i class="fab fa-github fa-3x"></i></a> 
+            <a href="#"><i class="fab fa-linkedin fa-3x"></i></a>
+        </div>
+    </div>
+
 </body>
 
 
@@ -69,6 +82,20 @@ else if (path_name == '/') {
 }
 
 $(active_pill).addClass('active');
+
+</script>
+
+<!-- Social media bar script -->
+<script type="text/javascript">
+    var ref = $('#hidden-row');
+    var pop = $('#social-media-bar');
+
+    var popper = new Popper(ref, pop, {
+        placement: 'top',
+    });
+
+    pop.show();
+
 </script>
 
 </html>

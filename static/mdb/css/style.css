@@ -9,18 +9,18 @@
     font-weight: 300;
 }
 
+#hidden-row {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
 #projects_table .sorting_disabled {
     cursor: default;
 }
 
 .project-info-trigger, .tech-info-trigger {
     cursor: pointer;
-}
-
-ul.dashed {
-    list-style-type: circle;
-    list-style-position: outside;
-    text-align: left;
 }
 
 .with-padding {
@@ -49,8 +49,7 @@ ul.dashed {
 }
 
 .custom-primary-dark {
-    background-color: #263238
-    ;
+    background-color: #263238;
 }
 
 
