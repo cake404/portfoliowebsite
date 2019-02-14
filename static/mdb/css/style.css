@@ -9,6 +9,12 @@
     font-weight: 300;
 }
 
+#social-media-bar {
+    position: fixed;
+    left: 10px;
+    top: 50%;
+}
+
 #hidden-row {
     position: fixed;
     bottom: 20px;

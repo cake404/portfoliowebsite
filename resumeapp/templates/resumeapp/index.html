@@ -7,7 +7,7 @@
 <link href="{% static 'mdb/css/addons/datatables.min.css' %}" rel="stylesheet">
 {% endblock %}
 
-{% block title %}Home Page{% endblock %}
+{% block title %}Projects{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -43,35 +43,111 @@
         </div>
     </div>
 
-    <!-- Buttons to change resume items views -->
-    <div class="row with-padding align-items-center">
-        <div class="col-md-6">
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" value="skills">Skills</button>
-                <button type="button" class="btn btn-primary" value="experiences">Experiences</button>
-                <button type="button" class="btn btn-primary" value="interests">Interests</button>
-            </div>        
-        </div>
-    </div>
 
-    <!-- Resume Items that fade in and fade out based on the button that was pressed -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     <div class="row with-padding">
-        <div id="resume-items-container">
+        <!-- Table View -->
+        <div class="col-md-4">
+            <div class="card card-body">
+                <table id="projects_table" class="table table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col"><h3>Projects</h3></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for project in project_list %}
+                            <tr class="project-info-trigger" url="{{project.image_url}}" id="{{project.id}}">
+                                <td scope="col">{{project.title}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-            <!-- Projects resume item -->
-            <div class="resume-item">
-
+        <!-- Details of clicked project -->
+        <div class="col-md-8 text-center">
+            <div class="card" id="project-details-card" style="display: none">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3 id="project-details-card-title"></h3>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <h5 style="padding-top: .75rem">Technology</h5>
+                                </div>
+                                <div class="col-sm-7">
+                                    <table id="tech-table" class="table table-hover">
+                                        <tr></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <img class="rounded z-depth-2" width="100%" id="project-image" >
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p id="project-description"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-right">
+                            <a class="btn btn-primary btn-md" target="blank" id="github-link">GitHub Repository</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
+    
 </div>
 {% endblock %}
 
 {% block scripts %}
-<script type="text/javascript">
-    // Ready the document
-    $( document ).ready(function() {
+<!-- MDBootstrap Datatables  -->
+<script type="text/javascript" src="{% static 'mdb/js/addons/datatables.min.js' %}"></script>
 
+<script type="text/javascript">
+
+    // Ready the document and the datatable
+    $( document ).ready(function() {
         $('#projects_table').DataTable({
             "paging": "simple",
             "pageLength": 10,
@@ -82,11 +158,9 @@
         });
     
         $('.dataTables_length').addClass('bs-select');
-    });
-</script>
 
-<!-- Scripts for project fade in/fade out functionality -->
-<script type="text/javascript">
+    });
+
     // Display the project card when a project is clicked
     $( ".project-info-trigger").click( function() {
         $.getJSON({
@@ -143,12 +217,9 @@
         }
     });
 
-    // Creates a button based on the technology and the link given
     function create_tech_button(link, name) {
         return '<a class="btn btn-primary btn-md btn-block" target="blank" href=' + link + '>' + name + ' Website</a>';
     };
 
 </script>
 {% endblock %}
-
-

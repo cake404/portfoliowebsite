@@ -32,11 +32,8 @@
         <nav class="navbar custom-primary-dark">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link text-white" id="home-pill" href="{% url 'home' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" id="projects-pill" href="{% url 'projectsapp:index' %}">Projects</a>
-                </li>
+                    <a class="nav-link text-white" id="home-pill" href="{% url 'resumeapp:index' %}">Home</a>
+                </li>r
             </ul>
         </nav>
     </header>
@@ -74,28 +71,11 @@
 
 var path_name = location.pathname;
 var active_pill = '#';
-if (path_name.includes('projects')) {
-    active_pill += 'projects-pill';
-} 
-else if (path_name == '/') {
+if (path_name == '/') {
     active_pill += 'home-pill';
 }
 
 $(active_pill).addClass('active');
 
 </script>
-
-<!-- Social media bar script -->
-<script type="text/javascript">
-    var ref = $('#hidden-row');
-    var pop = $('#social-media-bar');
-
-    var popper = new Popper(ref, pop, {
-        placement: 'top',
-    });
-
-    pop.show();
-
-</script>
-
 </html>
