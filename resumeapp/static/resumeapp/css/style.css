@@ -20,5 +20,14 @@
     margin-inline-end: auto;
 }
 
-
-
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+    flex-wrap: wrap;
+}
+.row-eq-height > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}

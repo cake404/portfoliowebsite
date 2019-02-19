@@ -5,6 +5,7 @@
 {% block css %}
 <!-- Custome styling -->
 <link rel="stylesheet" type="text/css" href="{% static 'resumeapp/css/style.css' %}">
+
 {% endblock %}
 
 {% block title %}Projects{% endblock %}
@@ -12,9 +13,9 @@
 {% block content %}
 <div class="container">
     <!-- Intro row -->
-    <div class="row with-padding align-items-center">
+    <div class="row row-eq-height with-padding">
         <div class="col-md-4">
-            <img class="rounded z-depth-2" src="https://res.cloudinary.com/cake404/image/upload/v1547279950/cat_3.jpg" >
+            <img class="rounded z-depth-2" width="100%" src="https://res.cloudinary.com/cake404/image/upload/v1547279950/cat_3.jpg" >
         </div>
         <div class="col-md-8">
             <div class="card card-body">
@@ -27,15 +28,14 @@
         </div>
     </div>
     <!-- About Me row -->
-    <div class="row with-padding align-items-center">
+    <div class="row row-eq-height with-padding">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">About Me</h3>
-                    <hr>
-                    <p>My name is Jacob, and I am student of Computer Science at NC State. I am a senior that is graduating in May 2019, 
-                    and I'm in the market looking for a fulfilling software engineering position.</p>
-                </div>
+            <div class="card card-body">
+                <h3 class="card-title">About Me</h3>
+                <hr>
+                <p>My name is Jacob, and I am student of Computer Science at NC State. I am a senior that is graduating in May 2019, 
+                and I'm in the market looking for a fulfilling software engineering position. I have a deep passion for the technical world, and 
+                I wish to find a job that will allow me to demonstrate and grow my programming knowledge.</p>
             </div>
         </div>
         <div class="col-md-4">
