@@ -48,22 +48,50 @@
     <div class="row with-padding align-items-center">
         <div class="col-md-6">
             <div class="btn-group" role="group" id="tab-buttons">
-                <button type="button" class="btn btn-primary" value="projects">Projects</button>
-                <button type="button" class="btn btn-primary" value="experiences">Experiences</button>
+                <button type="button" class="btn btn-primary active" value="projects">Projects</button>
                 <button type="button" class="btn btn-primary" value="interests">Interests</button>
             </div>        
         </div>
     </div>
 
     <!-- Sections that shows of different resume items -->
-    <div class="row with-padding tab-group" style="height:30%">
-
-
-        <div class="tab-item" id="skills"></div>
-        <div class="col-md-12 tab-item" id="experiences">
-            <div class="card card-body">
-                <h3 class="card-title">Industry Experience</h3>
-                <hr>
+    <div class="row with-padding" style="height: 60%">   
+        <div class="col-lg-12 tab-item" id="interests">
+            <div class="row row-eq-height">   
+                <div class="col-md-4">
+                    <div class="card card-body">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><h3>Technical Interests</h3></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="col">Artificial Intelligence</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col">Data Analysis</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col">System Design and Artchitecture</td>
+                                </tr>
+                                <tr>
+                                    <td scope="col">Web Development</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="carousel slide carousel-fade" data-ride="carousel" id="interestscarousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="rounded z-depth-2" width="100%" src="https://i.imgur.com/1f95x3r.jpg?1" alt="First slide">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -160,6 +188,7 @@
     
         $('.dataTables_length').addClass('bs-select');
         $('#experiences').hide();
+        $('#interests').hide();
 
     });
 
