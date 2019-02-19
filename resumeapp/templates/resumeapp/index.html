@@ -5,6 +5,8 @@
 {% block css %}
 <!-- MDBootstrap Datatables  -->
 <link href="{% static 'mdb/css/addons/datatables.min.css' %}" rel="stylesheet">
+<!-- Custome styling -->
+<link rel="stylesheet" type="text/css" href="{% static 'resumeapp/css/style.css' %}">
 {% endblock %}
 
 {% block title %}Projects{% endblock %}
@@ -60,7 +62,14 @@
 
 
         <div class="tab-item" id="skills"></div>
-        <div class="tab-item" id="experiences"></div>
+        <div class="tab-item" id="experiences">
+            <div class="col-md-12">
+                <div class="card card-body">
+                    <h3 class="card-title">Industry Experience</h3>
+                    <hr>
+                </div>
+            </div>
+        </div>
 
         <!-- Projects tab item -->
         <div class="col-lg-12 tab-item" id="projects">
@@ -152,6 +161,7 @@
         });
     
         $('.dataTables_length').addClass('bs-select');
+        $('#experiences').hide();
 
     });
 

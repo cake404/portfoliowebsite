@@ -9,7 +9,7 @@
 <!-- FontAwesome css -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <!-- Custom css -->
-<link rel="stylesheet" type="text/css" href="{% static 'mdb/css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main_style.css' %}">
 
 {% block css %}{% endblock %}
 </head>
@@ -40,10 +40,6 @@
     <main>
         {% block content %}{% endblock %}
     </main>
-
-    <!-- Hidden row to base the social media bar on -->
-    <div class="row" id="hidden-row"></div>
-
 
     <!-- Social media buttons -->
     <div class="card card-body" id="social-media-bar">

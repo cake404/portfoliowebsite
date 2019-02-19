@@ -1,0 +1,30 @@
+#title {
+    padding: 2rem 1rem;
+}
+
+#social-media-bar {
+    position: fixed;
+    left: 10px;
+    top: 50%;
+}
+
+.bg {
+    background-image: url("https://res.cloudinary.com/cake404/image/upload/v1548124111/serverroom.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.card, .card .card-body h1, .card .card-body h2 , .card .card-body h3,
+.card .card-body h4, .card .card-body h5, .card .card-body h6  {
+    font-weight: 300;
+}
+
+.custom-primary {
+    background-color: #37474F;
+}
+
+.custom-primary-dark {
+    background-color: #263238;
+}
+
