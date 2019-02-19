@@ -3,8 +3,6 @@
 {% load static %}
 
 {% block css %}
-<!-- MDBootstrap Datatables  -->
-<link href="{% static 'mdb/css/addons/datatables.min.css' %}" rel="stylesheet">
 <!-- Custome styling -->
 <link rel="stylesheet" type="text/css" href="{% static 'resumeapp/css/style.css' %}">
 {% endblock %}
@@ -16,14 +14,14 @@
     <!-- Intro row -->
     <div class="row with-padding align-items-center">
         <div class="col-md-4">
-            <img class="rounded z-depth-2" width="100%" src="https://res.cloudinary.com/cake404/image/upload/v1547279950/cat_3.jpg" >
+            <img class="rounded z-depth-2" src="https://res.cloudinary.com/cake404/image/upload/v1547279950/cat_3.jpg" >
         </div>
         <div class="col-md-8">
             <div class="card card-body">
                 <h3 class="card-title">Hello, World!</h3>
                 <hr>
                 <p>Welcome to my portfolio website! This is a display of my programming experience that I have gathered
-                through school and personal projects. This website was designed and implemented by me using the Django Framework
+                through school and personal projects. This website was designed and implemented using the Django Framework
                 and deployed using Amazon Web Services.</p>
             </div>
         </div>
@@ -58,16 +56,14 @@
     </div>
 
     <!-- Sections that shows of different resume items -->
-    <div class="row with-padding tab-group">
+    <div class="row with-padding tab-group" style="height:30%">
 
 
         <div class="tab-item" id="skills"></div>
-        <div class="tab-item" id="experiences">
-            <div class="col-md-12">
-                <div class="card card-body">
-                    <h3 class="card-title">Industry Experience</h3>
-                    <hr>
-                </div>
+        <div class="col-md-12 tab-item" id="experiences">
+            <div class="card card-body">
+                <h3 class="card-title">Industry Experience</h3>
+                <hr>
             </div>
         </div>
 
@@ -143,8 +139,10 @@
 {% endblock %}
 
 {% block scripts %}
-<!-- MDBootstrap Datatables  -->
-<script type="text/javascript" src="{% static 'mdb/js/addons/datatables.min.js' %}"></script>
+
+<!-- Bootstrap datatables Script -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 
 <!-- Script to change view of the projects in the projects -->
 <script type="text/javascript">
@@ -246,8 +244,5 @@
         });
 
     });
-
-
-
 </script>
 {% endblock %}
