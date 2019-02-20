@@ -1,19 +1,18 @@
 from django.shortcuts import render
-from .models import Project
+from .models import Project, TechnicalKnowledge
 from django.views import generic
 from django.http import JsonResponse
 
 import json
 
 
-class IndexView(generic.ListView):
-    template_name = 'resumeapp/index.html'
-    context_object_name = 'project_list'
+def IndexView(request):
+    project_list = Project.objects.all()
+    tech_know_list = TechnicalKnowledge.objects.all()
 
-    def get_queryset(self):
-        return Project.objects.all()
+    return render(request, 'resumeapp/index.html', {'project_list': project_list, 'tech_know_list': tech_know_list})
 
-def get_project_details(request):
+def GetProjectDetails(request):
     id = request.GET.get('id', None)
     project = Project.objects.get(pk=id)
     project_json = {

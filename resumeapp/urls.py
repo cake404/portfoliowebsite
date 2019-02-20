@@ -4,6 +4,6 @@ from . import views
 
 app_name = 'resumeapp'
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('projectdetails', views.get_project_details, name="project_details"), 
+    path('', views.IndexView, name='index'),
+    path('projectdetails', views.GetProjectDetails, name="project_details"), 
 ]
