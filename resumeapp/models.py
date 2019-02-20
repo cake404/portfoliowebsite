@@ -1,4 +1,17 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
+
+class TechnicalKnowledge(models.Model):
+    name = models.CharField(max_length=50)
+    strength = models.DecimalField(validators=[
+            MaxValueValidator(5),
+            MinValueValidator(0),
+        ], 
+        max_digits=2, decimal_places=1)
+
+    def __str__(self):
+        return self.name + " " + str(self.strength)
+
 
 class Technology(models.Model):
     name = models.CharField(max_length=50)
