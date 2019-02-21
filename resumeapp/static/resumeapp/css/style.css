@@ -1,8 +1,8 @@
-#projects_table .sorting_disabled {
+#projects-table .sorting_disabled {
     cursor: default;
 }
 
-.project-info-trigger, .tech-info-trigger {
+.projects-table-row, .tech-table-row {
     cursor: pointer;
 }
 
@@ -39,4 +39,8 @@
 .row-eq-height > [class*='col-'] {
     display: flex;
     flex-direction: column;
+}
+
+.hidden {
+    display: none;
 }

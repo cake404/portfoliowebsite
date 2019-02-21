@@ -1,6 +1,7 @@
 {% extends "main_template.html" %}
 
 {% load static %}
+{% load resumeapptags%}
 
 {% block css %}
 <!-- Custome styling -->
@@ -59,36 +60,51 @@
     <div class="row with-padding" style="height: 60%">   
 
         <!-- Technical Knowledge tab -->
-        <div class="col-lg-12 tab-item" id="knowledge">
-            <div class="row row-eq-height">   
-                <div class="col-md-5">
+        <div class="col-lg-12 tab-item hidden" id="knowledge">
+            <div class="row text-center">   
+                <div class="col-md-6">
                     <div class="card card-body">
-                        <table id="knowledge-table" class="table text-center">
+                        <table id="knowledge-table" class="table table-hover">
+                            <h3>Technical Knowledge</h3>
                             <thead>
                                 <tr>
-                                    <th scope="col"><h3>Technical Knowledge</h3></th>
+                                    <th>Technology</th>
+                                    <th>Strength</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td scope="col">Object Oriented Programming</td>
+                                {% for knowledge in tech_know_list %}
+                                <tr class="knowledge-table-row" data-tech-strength="{{knowledge.strength}}" data-title="Strength">
+                                    <td scope="col">{{knowledge.name}}</td>
+                                    <td scope="col">
+                                        <div class="star-rating-group d-flex flex-row">
+                                        {% for r in rating_range %}
+                                            {% if knowledge.strength <= r %} {# empty star #}
+                                                <i class="far fa-star fa-xs"></i>
+                                            {% elif knowledge.strength > r|addf:".5" %} {# full star #}
+                                                <i class="fas fa-star fa-xs"></i>
+                                            {% else %} {# half star #}
+                                                <i class="fas fa-star-half-alt fa-xs"></i> 
+                                            {% endif %}
+                                        {% endfor %}
+                                        </div>
+                                    </td>
                                 </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="col-md-7">
                 </div>
             </div>
         </div>
 
         <!-- Projects tab -->
         <div class="col-lg-12 tab-item" id="projects">
-            <div class="row row-eq-height">
+            <div class="row">
                 <!-- Table View -->
                 <div class="col-md-5">
                     <div class="card card-body">
-                        <table id="projects_table" class="table table-hover text-center">
+                        <table id="projects-table" class="table table-hover text-center">
                             <thead>
                                 <tr>
                                     <th scope="col"><h3>Projects</h3></th>
@@ -96,7 +112,7 @@
                             </thead>
                             <tbody>
                             {% for project in project_list %}
-                                <tr class="project-info-trigger" url="{{project.image_url}}" id="{{project.id}}">
+                                <tr class="projects-table-row" data-project-id="{{project.id}}">
                                     <td scope="col">{{project.title}}</td>
                                 </tr>
                             {% endfor %}
@@ -107,7 +123,7 @@
 
                 <!-- Details of clicked project -->
                 <div class="col-md-7 text-center">
-                    <div class="card" id="project-details-card" style="display: none">
+                    <div class="card hidden" id="project-details-card" >
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
@@ -164,7 +180,8 @@
 
     // Ready the document and the datatables
     $( document ).ready(function() {
-        $('#projects_table').DataTable({
+        // Make projects table into a datatable
+        $('#projects-table').DataTable({
             "paging": "simple",
             "pageLength": 5,
             "lengthChange": false,
@@ -172,7 +189,7 @@
             "searching": false,
             "info": false,
         });
-
+        // Make knowledge table into a datatable
         $('#knowledge-table').DataTable({
             "paging": "simple",
             "pageLength": 5,
@@ -180,20 +197,18 @@
             "ordering": false,
             "searching": false,
             "info": false,
-        });
-
-        
-    
-        $('#experiences').hide();
-        $('#knowledge').hide();
-
+        });      
     });
+</script>
+
+<!-- Script to change the project details when clicked on table -->
+<script type="text/javascript">
 
     // Display the project card when a project is clicked
-    $( ".project-info-trigger").click( function() {
+    $( ".projects-table-row").click( function() {
         $.getJSON({
            url: "{% url 'resumeapp:project_details' %}",  
-           data: {id: $(this).attr('id')},
+           data: {id: $(this).attr('data-project-id')},
         })
         .fail(function() {
             console.log("error retrieving data");
@@ -214,14 +229,14 @@
                 var link = data['technologies'][i]['link'];
                 var name = data['technologies'][i]['name'];
                 
-                $("#tech-table").append("<tr class='tech-info-trigger'"
+                $("#tech-table").append("<tr class='tech-table-row'"
                 + "data-toggle='popover' title='" +  tech_type
                 + "' data-content='" + create_tech_button(link, name) + "'>"
                 + "<td scope='col'>" + name + "</td></tr>");
             }
 
             // Enable pop-overs for each of the tech row items
-            $('#tech-table').find('.tech-info-trigger').popover({
+            $('#tech-table .tech-table-row').popover({
                 container: 'body',
                 html: true,
             });
@@ -271,4 +286,6 @@
 
     });
 </script>
+
+
 {% endblock %}
