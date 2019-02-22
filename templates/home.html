@@ -2,7 +2,10 @@
 
 {% load static %}
 
-{% block css %}{% endblock %}
+{% block css %}
+<!-- MDBootstrap Datatables  -->
+<link href="{% static 'mdb/css/addons/datatables.min.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block title %}Home Page{% endblock %}
 
@@ -10,10 +13,10 @@
 <div class="container">
     <!-- Intro row -->
     <div class="row with-padding align-items-center">
-        <div class="col-md-5">
+        <div class="col-md-4">
             <img class="rounded z-depth-2" width="100%" src="https://res.cloudinary.com/cake404/image/upload/v1547279950/cat_3.jpg" >
         </div>
-        <div class="col-md-7">
+        <div class="col-md-8">
             <div class="card card-body">
                 <h3 class="card-title">Hello, World!</h3>
                 <hr>
@@ -25,7 +28,7 @@
     </div>
     <!-- About Me row -->
     <div class="row with-padding align-items-center">
-        <div class="col-md-7">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
                     <h3 class="card-title">About Me</h3>
@@ -35,36 +38,29 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-4">
             <img class="rounded z-depth-2" width="100%" src="https://res.cloudinary.com/cake404/image/upload/v1547279950/cat_3.jpg" >
         </div>
     </div>
 
-    <!-- Buttons to chane the card views -->
+    <!-- Buttons to change resume items views -->
     <div class="row with-padding align-items-center">
         <div class="col-md-6">
             <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary" value="skills">Skills</button>
                 <button type="button" class="btn btn-primary" value="experiences">Experiences</button>
+                <button type="button" class="btn btn-primary" value="interests">Interests</button>
             </div>        
         </div>
     </div>
-    <!-- Card views -->
+
+    <!-- Resume Items that fade in and fade out based on the button that was pressed -->
     <div class="row with-padding">
-        <div class="col-md-6">
-            <div id="cards-holder">
-                <!-- Skills card -->
-                <div id="card-skills" class="card card-body">
-                    <div class="card-title"><h3>Skills</h3></div> 
-                    <hr>
-                    <p>This is a list of my skills</p>                   
-                </div>
-                <!-- Experiences card -->
-                <div id="card-experiences" class="card card-body" style="display:none">
-                    <div class="card-title"><h3>Experiences</h3></div> 
-                    <hr>
-                    <p>This is a list of my Expereinces</p>                   
-                </div>
+        <div id="resume-items-container">
+
+            <!-- Projects resume item -->
+            <div class="resume-item">
+
             </div>
         </div>
     </div>
@@ -75,28 +71,82 @@
 <script type="text/javascript">
     // Ready the document
     $( document ).ready(function() {
-        // Initial state of the cards section
-        window.cur_card = "skills";
+
+        $('#projects_table').DataTable({
+            "paging": "simple",
+            "pageLength": 10,
+            "lengthChange": false,
+            "ordering": false,
+            "searching": false,
+            "info": false,
+        });
+    
+        $('.dataTables_length').addClass('bs-select');
+    });
+</script>
+
+<!-- Scripts for project fade in/fade out functionality -->
+<script type="text/javascript">
+    // Display the project card when a project is clicked
+    $( ".project-info-trigger").click( function() {
+        $.getJSON({
+           url: "{% url 'resumeapp:project_details' %}",  
+           data: {id: $(this).attr('id')},
+        })
+        .fail(function() {
+            console.log("error retrieving data");
+        })
+        .done(function(data) {
+
+            // Edit all of the information for the project card
+            $('#project-details-card').hide();
+            $('#project-details-card-title').text(data['title']);
+            $('#project-image').attr('src', data['image_url']);
+            $('#project-description').text(data['description']);
+            $('#github-link').attr('href', data['github_link']);
+            $('#tech-table').find('tr').remove();
+            
+            // Add rows to the technologies table for the project card
+            for(var i = 0; i < data['technologies'].length; i++) {
+                var tech_type = data['technologies'][i]['tech_type'];
+                var link = data['technologies'][i]['link'];
+                var name = data['technologies'][i]['name'];
+                
+                $("#tech-table").append("<tr class='tech-info-trigger'"
+                + "data-toggle='popover' title='" +  tech_type
+                + "' data-content='" + create_tech_button(link, name) + "'>"
+                + "<td scope='col'>" + name + "</td></tr>");
+            }
+
+            // Enable pop-overs for each of the tech row items
+            $('#tech-table').find('.tech-info-trigger').popover({
+                container: 'body',
+                html: true,
+            });
+
+            // Fade the project card from the right
+            $('#project-details-card').addClass('fadeInRight fast animated').show()
+                .one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
+                function(event) {
+                    $(this).removeClass('fadeInRight animated');
+            });
+        });
     });
 
-    // Change card view based on the button that is clicked
-    $(".btn-group .btn").click( function() {
+    // Close popup when click else where
+    $("html").on("mouseup", function (e) {
+        var l = $(e.target);
+        if (l[0].className.indexOf("popover") == -1) {
+            $(".popover").each(function () {
+                $(this).popover("hide");
+            });
+        }
+    });
 
-        // Fade out current card 
-        $('#card-' + window.cur_card).hide();
-
-        var next_card = $(this).val();
-
-        // Fade in the next card
-        $('#card-' + next_card).addClass('fadeIn fast animated').show()
-            .one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
-            function(event) {
-                $(this).removeClass('fadeIn animated');
-        });
-
-        window.cur_card = next_card;
-        
-    })
+    // Creates a button based on the technology and the link given
+    function create_tech_button(link, name) {
+        return '<a class="btn btn-primary btn-md btn-block" target="blank" href=' + link + '>' + name + ' Website</a>';
+    };
 
 </script>
 {% endblock %}

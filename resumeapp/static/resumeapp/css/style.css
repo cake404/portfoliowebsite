@@ -1,0 +1,46 @@
+#projects-table .sorting_disabled {
+    cursor: default;
+}
+
+.projects-table-row, .tech-table-row {
+    cursor: pointer;
+}
+
+.with-padding {
+    padding-top: 30px;
+}
+
+.carousel-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 25%;
+    overflow: hidden;
+}
+
+
+.right-line {
+    border-right: 1px solid rgba(0,0,0,.1);
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+}
+
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+    flex-wrap: wrap;
+}
+.row-eq-height > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}

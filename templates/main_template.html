@@ -3,13 +3,13 @@
 <head>
 {% load static %}
 <!-- Bootstrap core CSS -->
-<link href="{% static 'mdb/css/bootstrap.min.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <!-- Material Design Bootstrap -->
-<link href="{% static 'mdb/css/mdb.min.css' %}" rel="stylesheet">
-<!-- Custom css -->
-<link rel="stylesheet" type="text/css" href="{% static 'mdb/css/style.css' %}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/css/mdb.min.css" rel="stylesheet">
 <!-- FontAwesome css -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<!-- Custom css -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/main_style.css' %}">
 
 {% block css %}{% endblock %}
 </head>
@@ -32,10 +32,7 @@
         <nav class="navbar custom-primary-dark">
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link text-white" id="home-pill" href="{% url 'home' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" id="projects-pill" href="{% url 'projectsapp:index' %}">Projects</a>
+                    <a class="nav-link text-white" id="home-pill" href="{% url 'resumeapp:index' %}">Home</a>
                 </li>
             </ul>
         </nav>
@@ -43,10 +40,6 @@
     <main>
         {% block content %}{% endblock %}
     </main>
-
-    <!-- Hidden row to base the social media bar on -->
-    <div class="row" id="hidden-row"></div>
-
 
     <!-- Social media buttons -->
     <div class="card card-body" id="social-media-bar">
@@ -60,42 +53,27 @@
 
 
 <!-- SCRIPTS -->
+<!-- Jquery  -->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<!-- Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<!-- Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<!-- Popper Script -->
-<script type="text/javascript" src="{% static 'mdb/js/popper.min.js' %}"></script>
-<!-- Jquery Script -->
-<script type="text/javascript" src="{% static 'mdb/js/jquery-3.3.1.min.js' %}"></script>
-<!-- Bootstrap script -->
-<script type="text/javascript" src="{% static 'mdb/js/bootstrap.min.js' %}"></script>
-
-{% block scripts %}{% endblock %}
-
+<!-- Script to make correct pill active to the current page -->
 <script type="text/javascript">
 
 var path_name = location.pathname;
 var active_pill = '#';
-if (path_name.includes('projects')) {
-    active_pill += 'projects-pill';
-} 
-else if (path_name == '/') {
+if (path_name == '/') {
     active_pill += 'home-pill';
 }
 
 $(active_pill).addClass('active');
-
 </script>
 
-<!-- Social media bar script -->
-<script type="text/javascript">
-    var ref = $('#hidden-row');
-    var pop = $('#social-media-bar');
-
-    var popper = new Popper(ref, pop, {
-        placement: 'top',
-    });
-
-    pop.show();
-
-</script>
-
+{% block scripts %}{% endblock %}
 </html>
