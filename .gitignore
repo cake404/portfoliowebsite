@@ -1,1 +1,4 @@
 /my.cnf
+/static/admin/
+/static/resumeapp/
+*settings.py
