@@ -2,10 +2,8 @@
     padding: 4rem;
 }
 
-#social-media-bar {
-    position: fixed;
-    left: 10px;
-    top: 50%;
+#social-buttons a {
+    padding-right: 10px;
 }
 
 .bg {
@@ -24,4 +22,3 @@
 .custom-primary-dark {
     background-color: #263238;
 }
-
