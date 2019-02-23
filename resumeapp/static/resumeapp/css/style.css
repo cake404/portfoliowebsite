@@ -44,3 +44,24 @@
 .hidden {
     display: none;
 }
+
+.hidden-images {
+    display: none;
+}
+
+@media only screen and (max-width: 991px) {
+    .hidden-images {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .responsive-padding {
+        padding-top: 30px;
+    }
+}
+
+
+
+
+

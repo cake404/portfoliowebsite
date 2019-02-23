@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <!-- Custom css -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/main_style.css' %}">
-
 {% block css %}{% endblock %}
 </head>
 
@@ -20,7 +19,7 @@
         <!-- Website title-->
         <div class="card card-image bg text-white">
             <div class="d-flex align-items-center justify-content-center rgba-black-strong" id="title">
-                <div class="col-sm-4 text-center">
+                <div class="col-xs-12 col-md-5 text-center">
                     <h1>Jacob Struckmeyer</h1>
                     <hr>
                     <h3>Website Portfolio</h3>
@@ -35,20 +34,17 @@
                     <a class="nav-link text-white" id="home-pill" href="{% url 'resumeapp:index' %}">Home</a>
                 </li>
             </ul>
+
+            <!-- Social Media buttons -->
+            <div class="d-flex" id="social-buttons">
+                <a href="https://github.com/cake404" target="blank"><i class="fab fa-github fa-3x"></i></a> 
+                <a href="https://www.linkedin.com/in/jacob-struckmeyer" target="blank"><i class="fab fa-linkedin fa-3x"></i></a>
+            </div>
         </nav>
     </header>
     <main>
         {% block content %}{% endblock %}
     </main>
-
-    <!-- Social media buttons -->
-    <div class="card card-body" id="social-media-bar">
-        <div class="d-flex flex-column">
-            <a href="https://github.com/cake404" target="blank"><i class="fab fa-github fa-3x"></i></a> 
-            <a href="#"><i class="fab fa-linkedin fa-3x"></i></a>
-        </div>
-    </div>
-
 </body>
 
 

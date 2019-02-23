@@ -15,10 +15,10 @@
 <div class="container">
     <!-- Intro row -->
     <div class="row row-eq-height with-padding">
-        <div class="col-md-4">
+        <div class="d-none d-lg-block col-lg-4">
             <img class="rounded z-depth-2" width="100%" src="https://i.imgur.com/4SgtPSu.jpg" >
         </div>
-        <div class="col-md-8">
+        <div class="col-lg-8 col-md-12">
             <div class="card card-body">
                 <h3 class="card-title">Hello, World!</h3>
                 <hr>
@@ -29,9 +29,17 @@
             </div>
         </div>
     </div>
+    <div class="row with-padding hidden-images">
+        <div class="offset-md-1 col-md-5 col-sm-6 col-xs-12">
+            <img class="rounded z-depth-2" width="100%" src="https://i.imgur.com/4SgtPSu.jpg" >
+        </div>
+        <div class="col-md-5 col-sm-6 d-none d-sm-block">
+            <img class="rounded z-depth-2" width="100%" src="https://i.imgur.com/LlpXYDt.jpg" >
+        </div>
+    </div>
     <!-- About Me row -->
     <div class="row row-eq-height with-padding">
-        <div class="col-md-8">
+        <div class="col-lg-8 col-md-12">
             <div class="card card-body">
                 <h3 class="card-title">About Me</h3>
                 <hr>
@@ -40,7 +48,7 @@
                 I wish to find a job that will allow me to demonstrate and grow my programming knowledge.</p>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="d-none d-lg-block col-lg-4">
             <img class="rounded z-depth-2" width="100%" src="https://i.imgur.com/LlpXYDt.jpg" >
         </div>
     </div>
@@ -48,11 +56,11 @@
 
     <!-- Buttons to change resume items views -->
     <div class="row with-padding align-items-center">
-        <div class="col-md-6">
+        <div class="col-xs-12 col-sm-12 col-md-6 center-block">
             <div class="btn-group" role="group" id="tab-buttons">
-                <button type="button" class="btn btn-primary active" value="projects">Projects</button>
-                <button type="button" class="btn btn-primary" value="knowledge">Technical Knowledge</button>
-                <button type="button" class="btn btn-primary" value="interests">Interests</button>
+                <button type="button" class="btn btn-primary btn-md active" value="projects">Projects</button>
+                <button type="button" class="btn btn-primary btn-md" value="knowledge">Technical Knowledge</button>
+                <button type="button" class="btn btn-primary btn-md" value="interests">Interests</button>
             </div>        
         </div>
     </div>
@@ -61,9 +69,9 @@
     <div class="row with-padding" style="height: 60%"> 
 
         <!-- Other interests -->
-        <div class="col-lg-12 tab-item hidden" id="interests">
+        <div class="col-12 tab-item hidden" id="interests">
             <div class="row row-eq-height text-center">
-                <div class="offset-md-1 col-md-4">
+                <div class="offset-lg-1 col-md-5 col-lg-4">
                     <div class="card card-body">
                         <table id="interests-table" class="table table-hover text-center">
                             <thead>
@@ -79,7 +87,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7 responsive-padding">
                     <div class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -98,7 +106,7 @@
         </div>
 
         <!-- Technical Knowledge tab -->
-        <div class="col-lg-12 tab-item hidden" id="knowledge">
+        <div class="col-12 tab-item hidden" id="knowledge">
             <div class="row text-center">   
                 <div class="offset-md-2 col-md-8">
                     <div class="card card-body">
@@ -137,10 +145,10 @@
         </div>
 
         <!-- Projects tab -->
-        <div class="col-lg-12 tab-item" id="projects">
+        <div class="col-12 tab-item" id="projects">
             <div class="row">
                 <!-- Table View -->
-                <div class="col-md-5">
+                <div class="col-xs-12 col-sm-12 col-md-5 text-center">
                     <div class="card card-body">
                         <table id="projects-table" class="table table-hover text-center">
                             <thead>
@@ -160,11 +168,11 @@
                 </div>
 
                 <!-- Details of clicked project -->
-                <div class="col-md-7 text-center">
+                <div class="col-xs-12 col-sm-12 col-md-7 text-center responsive-padding">
                     <div class="card hidden" id="project-details-card" >
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-xs-12 col-lg-5">
                                     <br>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -173,17 +181,17 @@
                                     </div>
                                     <br>
                                     <div class="row">
-                                        <div class="col-sm-5">
+                                        <div class="col-5">
                                             <h5 style="padding-top: .75rem">Tech</h5>
                                         </div>
-                                        <div class="col-sm-7">
+                                        <div class="col-7">
                                             <table id="tech-table" class="table table-hover">
                                                 <tr></tr>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-xs-12 col-lg-7">
                                     <img class="rounded z-depth-2" width="100%" id="project-image" >
                                 </div>
                             </div>
@@ -205,6 +213,7 @@
         </div>
     </div>
 </div>
+
 {% endblock %}
 
 {% block scripts %}
@@ -226,6 +235,7 @@
             "ordering": false,
             "searching": false,
             "info": false,
+            "sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>'
         });
         // Make knowledge table into a datatable
         $('#knowledge-table').DataTable({
@@ -235,6 +245,7 @@
             "ordering": false,
             "searching": false,
             "info": false,
+            "sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>'
         });      
     });
 </script>

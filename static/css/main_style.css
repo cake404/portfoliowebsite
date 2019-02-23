@@ -2,17 +2,12 @@
     padding: 4rem;
 }
 
-#social-media-bar {
-    position: fixed;
-    left: 10px;
-    top: 50%;
+#social-buttons a {
+    padding-right: 10px;
 }
 
 .bg {
-    background-image: url("https://i.imgur.com/tOUrXIL.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100%;
+    background: url("https://i.imgur.com/tOUrXIL.jpg") no-repeat scroll center top transparent;
 }
 
 .card, .card .card-body h1, .card .card-body h2 , .card .card-body h3,
@@ -27,4 +22,3 @@
 .custom-primary-dark {
     background-color: #263238;
 }
-
