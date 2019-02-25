@@ -1,4 +1,7 @@
-/my.cnf
+/config/my.cnf
 /static/admin/
 /static/resumeapp/
 /portfoliowebsite/settings.py
+
+
+
