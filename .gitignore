@@ -1,7 +1,7 @@
 /config/my.cnf
+/config/gunicorn_start.sh
 /static/admin/
 /static/resumeapp/
 /portfoliowebsite/settings.py
-/portfoliowebsite/gunicorn_start.sh
 
 
