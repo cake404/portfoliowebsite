@@ -4,7 +4,7 @@ Description=Portfoliowebsite gunicorn daemon
 [Service]
 Type=simple
 User=ubuntu
-ExecStart=/var/www/mysite/gunicorn_start.sh
+ExecStart=/path/to/portfoliowebsite/config/gunicorn_start.sh
 
 [Install]
 WantedBy=multi-user.target
