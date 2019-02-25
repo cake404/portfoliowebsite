@@ -2,6 +2,7 @@
 /static/admin/
 /static/resumeapp/
 /portfoliowebsite/settings.py
+/portfoliowebiste/gunicorn_start.sh
 
 
 
