@@ -27,7 +27,7 @@ class Technology(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=50)
-    description = models.CharField(max_length=255, blank=True)
+    description = models.TextField(blank=True)
     github_link = models.CharField(max_length=255, blank=True)
     image_url = models.CharField(max_length=255, blank=True)
     technologies = models.ManyToManyField(Technology, blank=True)
