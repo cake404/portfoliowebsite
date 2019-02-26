@@ -32,9 +32,11 @@ Install MySQL on you computer either through a package manager:
 
 Run these commands to get the correct python packages:
 
-```pip3 install django```
-```pip3 install pymysql```
-```pip3 install gunicorn```
+```
+pip3 install django
+pip3 install pymysql
+pip3 install gunicorn
+```
 
 ### Install Nginx
 
