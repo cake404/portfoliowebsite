@@ -95,6 +95,10 @@ Rename the file `config/gunicorn_start.example.sh` to `config/gunicorn_start.sh`
 Deployment
 ----------
 
+Run this command to reload services:
+
+`sudo systemctl daemon-reload`
+
 ### Start Nginx
 
 Restart Nginx by running this command:
@@ -102,5 +106,14 @@ Restart Nginx by running this command:
 `sudo systemctl restart nginx`
 
 ### Load/Run Gunicorn Service
+
+Restart gunicorn with this command:
+
+`sudo systemctl restart portfolio_gunicorn`
+
+### View in Browser
+
+Go into your browser and type in `localhost` and you should be able to view the project!
+
 
 
