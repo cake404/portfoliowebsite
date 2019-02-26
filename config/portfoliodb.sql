@@ -125,7 +125,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$120000$J2LPvR7dw5rU$wFDUDxxIAWSxA+Eh9s/omRLb393363tuFM1LlCaXhMU=','2019-02-22 23:50:54.936005',1,'jake','','','',1,1,'2019-02-22 06:54:56.157764');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$120000$J2LPvR7dw5rU$wFDUDxxIAWSxA+Eh9s/omRLb393363tuFM1LlCaXhMU=','2019-02-26 00:40:35.569290',1,'jake','','','',1,1,'2019-02-22 06:54:56.157764');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +206,7 @@ CREATE TABLE `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +215,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2019-02-22 06:57:00.732327','1','Python',1,'[{\"added\": {}}]',10,1),(2,'2019-02-22 06:57:33.632386','2','Django',1,'[{\"added\": {}}]',10,1),(3,'2019-02-22 06:57:48.359384','3','MySQL',1,'[{\"added\": {}}]',10,1),(4,'2019-02-22 06:58:46.402027','4','Nginx',1,'[{\"added\": {}}]',10,1),(5,'2019-02-22 07:00:50.548325','1','Portfolio Website',1,'[{\"added\": {}}]',9,1),(6,'2019-02-22 07:01:15.300962','1','Object Oriented Programming 4.5',1,'[{\"added\": {}}]',11,1),(7,'2019-02-22 07:02:17.358665','2','Python 4',1,'[{\"added\": {}}]',11,1),(8,'2019-02-22 07:02:23.669691','3','Java 4.5',1,'[{\"added\": {}}]',11,1),(9,'2019-02-22 07:02:34.473261','4','C 3',1,'[{\"added\": {}}]',11,1),(10,'2019-02-22 07:02:42.822604','5','C++ 3.5',1,'[{\"added\": {}}]',11,1),(11,'2019-02-22 07:02:56.577022','6','SQL 4',1,'[{\"added\": {}}]',11,1),(12,'2019-02-22 07:16:04.661724','1','Portfolio Website',2,'[{\"changed\": {\"fields\": [\"image_url\"]}}]',9,1),(13,'2019-02-22 23:51:30.444673','5','Java',1,'[{\"added\": {}}]',10,1),(14,'2019-02-22 23:52:18.466634','6','Processing',1,'[{\"added\": {}}]',10,1),(15,'2019-02-22 23:52:57.634185','2','Game Engine',1,'[{\"added\": {}}]',9,1),(16,'2019-02-22 23:53:32.275556','3','Space Invaders',1,'[{\"added\": {}}]',9,1),(17,'2019-02-22 23:56:36.037277','3','Space Invaders',2,'[{\"changed\": {\"fields\": [\"image_url\"]}}]',9,1),(18,'2019-02-22 23:57:27.524057','1','Portfolio Website',2,'[{\"changed\": {\"fields\": [\"image_url\"]}}]',9,1),(19,'2019-02-22 23:57:43.251995','2','Game Engine',2,'[{\"changed\": {\"fields\": [\"image_url\"]}}]',9,1);
+INSERT INTO `django_admin_log` VALUES (1,'2019-02-22 06:57:00.732327','1','Python',1,'[{\"added\": {}}]',10,1),(2,'2019-02-22 06:57:33.632386','2','Django',1,'[{\"added\": {}}]',10,1),(3,'2019-02-22 06:57:48.359384','3','MySQL',1,'[{\"added\": {}}]',10,1),(4,'2019-02-22 06:58:46.402027','4','Nginx',1,'[{\"added\": {}}]',10,1),(5,'2019-02-22 07:00:50.548325','1','Portfolio Website',1,'[{\"added\": {}}]',9,1),(6,'2019-02-22 07:01:15.300962','1','Object Oriented Programming 4.5',1,'[{\"added\": {}}]',11,1),(7,'2019-02-22 07:02:17.358665','2','Python 4',1,'[{\"added\": {}}]',11,1),(8,'2019-02-22 07:02:23.669691','3','Java 4.5',1,'[{\"added\": {}}]',11,1),(9,'2019-02-22 07:02:34.473261','4','C 3',1,'[{\"added\": {}}]',11,1),(10,'2019-02-22 07:02:42.822604','5','C++ 3.5',1,'[{\"added\": {}}]',11,1),(11,'2019-02-22 07:02:56.577022','6','SQL 4',1,'[{\"added\": {}}]',11,1),(12,'2019-02-22 07:16:04.661724','1','Portfolio Website',2,'[{\"changed\": {\"fields\": [\"image_url\"]}}]',9,1),(13,'2019-02-22 23:51:30.444673','5','Java',1,'[{\"added\": {}}]',10,1),(14,'2019-02-22 23:52:18.466634','6','Processing',1,'[{\"added\": {}}]',10,1),(15,'2019-02-22 23:52:57.634185','2','Game Engine',1,'[{\"added\": {}}]',9,1),(16,'2019-02-22 23:53:32.275556','3','Space Invaders',1,'[{\"added\": {}}]',9,1),(17,'2019-02-22 23:56:36.037277','3','Space Invaders',2,'[{\"changed\": {\"fields\": [\"image_url\"]}}]',9,1),(18,'2019-02-22 23:57:27.524057','1','Portfolio Website',2,'[{\"changed\": {\"fields\": [\"image_url\"]}}]',9,1),(19,'2019-02-22 23:57:43.251995','2','Game Engine',2,'[{\"changed\": {\"fields\": [\"image_url\"]}}]',9,1),(20,'2019-02-26 00:47:47.289099','2','Game Engine',2,'[{\"changed\": {\"fields\": [\"description\"]}}]',9,1),(21,'2019-02-26 00:51:28.685871','1','Portfolio Website',2,'[{\"changed\": {\"fields\": [\"description\"]}}]',9,1),(22,'2019-02-26 01:24:05.983520','2','Game Engine',2,'[{\"changed\": {\"fields\": [\"description\"]}}]',9,1),(23,'2019-02-26 01:32:10.468054','3','Space Invaders',2,'[{\"changed\": {\"fields\": [\"description\"]}}]',9,1),(24,'2019-02-26 01:32:50.786234','3','Space Invaders',2,'[{\"changed\": {\"fields\": [\"description\"]}}]',9,1),(25,'2019-02-26 01:42:51.239713','1','Portfolio Website',2,'[{\"changed\": {\"fields\": [\"description\"]}}]',9,1),(26,'2019-02-26 01:48:21.923788','3','Space Invaders',2,'[{\"changed\": {\"fields\": [\"description\"]}}]',9,1),(27,'2019-02-26 01:49:05.809516','3','Space Invaders',2,'[{\"changed\": {\"fields\": [\"description\"]}}]',9,1),(28,'2019-02-26 01:49:30.101960','1','Portfolio Website',2,'[{\"changed\": {\"fields\": [\"description\"]}}]',9,1),(29,'2019-02-26 05:36:44.848757','7','PHP',1,'[{\"added\": {}}]',10,1),(30,'2019-02-26 05:37:38.902196','8','Yii2',1,'[{\"added\": {}}]',10,1),(31,'2019-02-26 05:48:38.590709','4','IP Locator Website',1,'[{\"added\": {}}]',9,1),(32,'2019-02-26 05:49:07.504531','4','IP Locator Website',2,'[]',9,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,7 +258,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,7 +267,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2019-02-21 18:27:16.846404'),(2,'auth','0001_initial','2019-02-21 18:27:17.230481'),(3,'admin','0001_initial','2019-02-21 18:27:17.324714'),(4,'admin','0002_logentry_remove_auto_add','2019-02-21 18:27:17.334739'),(5,'admin','0003_logentry_add_action_flag_choices','2019-02-21 18:27:17.344515'),(6,'contenttypes','0002_remove_content_type_name','2019-02-21 18:27:17.416961'),(7,'auth','0002_alter_permission_name_max_length','2019-02-21 18:27:17.428301'),(8,'auth','0003_alter_user_email_max_length','2019-02-21 18:27:17.442747'),(9,'auth','0004_alter_user_username_opts','2019-02-21 18:27:17.453609'),(10,'auth','0005_alter_user_last_login_null','2019-02-21 18:27:17.489700'),(11,'auth','0006_require_contenttypes_0002','2019-02-21 18:27:17.493557'),(12,'auth','0007_alter_validators_add_error_messages','2019-02-21 18:27:17.505847'),(13,'auth','0008_alter_user_username_max_length','2019-02-21 18:27:17.520417'),(14,'auth','0009_alter_user_last_name_max_length','2019-02-21 18:27:17.533406'),(15,'projectsapp','0001_initial','2019-02-21 18:27:17.665790'),(16,'projectsapp','0002_auto_20190108_1518','2019-02-21 18:27:17.669886'),(17,'projectsapp','0003_auto_20190108_1558','2019-02-21 18:27:17.673333'),(18,'projectsapp','0004_auto_20190112_0741','2019-02-21 18:27:17.676409'),(19,'projectsapp','0005_auto_20190126_0045','2019-02-21 18:27:17.678315'),(20,'projectsapp','0006_auto_20190126_0110','2019-02-21 18:27:17.681457'),(21,'projectsapp','0007_auto_20190126_0122','2019-02-21 18:27:17.684951'),(22,'projectsapp','0008_auto_20190126_0126','2019-02-21 18:27:17.688379'),(23,'projectsapp','0009_auto_20190126_0127','2019-02-21 18:27:17.784719'),(24,'sessions','0001_initial','2019-02-21 18:27:17.813744'),(25,'projectsapp','0001_squashed_0008_auto_20190126_0126','2019-02-21 18:27:17.819507'),(26,'resumeapp','0001_initial','2019-02-22 05:40:54.521407'),(27,'resumeapp','0002_auto_20190108_1518','2019-02-22 05:40:54.525447'),(28,'resumeapp','0003_auto_20190108_1558','2019-02-22 05:40:54.528953'),(29,'resumeapp','0004_auto_20190112_0741','2019-02-22 05:40:54.532229'),(30,'resumeapp','0005_auto_20190126_0045','2019-02-22 05:40:54.536453'),(31,'resumeapp','0006_auto_20190126_0110','2019-02-22 05:40:54.538472'),(32,'resumeapp','0007_auto_20190126_0122','2019-02-22 05:40:54.541963'),(33,'resumeapp','0008_auto_20190126_0126','2019-02-22 05:40:54.545115'),(34,'resumeapp','0009_auto_20190126_0127','2019-02-22 05:40:54.642304'),(35,'resumeapp','0010_technicalknowledge','2019-02-22 05:40:54.664438'),(36,'resumeapp','0011_auto_20190220_2124','2019-02-22 05:40:54.699268'),(37,'resumeapp','0001_squashed_0008_auto_20190126_0126','2019-02-22 05:40:54.704504');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2019-02-21 18:27:16.846404'),(2,'auth','0001_initial','2019-02-21 18:27:17.230481'),(3,'admin','0001_initial','2019-02-21 18:27:17.324714'),(4,'admin','0002_logentry_remove_auto_add','2019-02-21 18:27:17.334739'),(5,'admin','0003_logentry_add_action_flag_choices','2019-02-21 18:27:17.344515'),(6,'contenttypes','0002_remove_content_type_name','2019-02-21 18:27:17.416961'),(7,'auth','0002_alter_permission_name_max_length','2019-02-21 18:27:17.428301'),(8,'auth','0003_alter_user_email_max_length','2019-02-21 18:27:17.442747'),(9,'auth','0004_alter_user_username_opts','2019-02-21 18:27:17.453609'),(10,'auth','0005_alter_user_last_login_null','2019-02-21 18:27:17.489700'),(11,'auth','0006_require_contenttypes_0002','2019-02-21 18:27:17.493557'),(12,'auth','0007_alter_validators_add_error_messages','2019-02-21 18:27:17.505847'),(13,'auth','0008_alter_user_username_max_length','2019-02-21 18:27:17.520417'),(14,'auth','0009_alter_user_last_name_max_length','2019-02-21 18:27:17.533406'),(15,'projectsapp','0001_initial','2019-02-21 18:27:17.665790'),(16,'projectsapp','0002_auto_20190108_1518','2019-02-21 18:27:17.669886'),(17,'projectsapp','0003_auto_20190108_1558','2019-02-21 18:27:17.673333'),(18,'projectsapp','0004_auto_20190112_0741','2019-02-21 18:27:17.676409'),(19,'projectsapp','0005_auto_20190126_0045','2019-02-21 18:27:17.678315'),(20,'projectsapp','0006_auto_20190126_0110','2019-02-21 18:27:17.681457'),(21,'projectsapp','0007_auto_20190126_0122','2019-02-21 18:27:17.684951'),(22,'projectsapp','0008_auto_20190126_0126','2019-02-21 18:27:17.688379'),(23,'projectsapp','0009_auto_20190126_0127','2019-02-21 18:27:17.784719'),(24,'sessions','0001_initial','2019-02-21 18:27:17.813744'),(25,'projectsapp','0001_squashed_0008_auto_20190126_0126','2019-02-21 18:27:17.819507'),(26,'resumeapp','0001_initial','2019-02-22 05:40:54.521407'),(27,'resumeapp','0002_auto_20190108_1518','2019-02-22 05:40:54.525447'),(28,'resumeapp','0003_auto_20190108_1558','2019-02-22 05:40:54.528953'),(29,'resumeapp','0004_auto_20190112_0741','2019-02-22 05:40:54.532229'),(30,'resumeapp','0005_auto_20190126_0045','2019-02-22 05:40:54.536453'),(31,'resumeapp','0006_auto_20190126_0110','2019-02-22 05:40:54.538472'),(32,'resumeapp','0007_auto_20190126_0122','2019-02-22 05:40:54.541963'),(33,'resumeapp','0008_auto_20190126_0126','2019-02-22 05:40:54.545115'),(34,'resumeapp','0009_auto_20190126_0127','2019-02-22 05:40:54.642304'),(35,'resumeapp','0010_technicalknowledge','2019-02-22 05:40:54.664438'),(36,'resumeapp','0011_auto_20190220_2124','2019-02-22 05:40:54.699268'),(37,'resumeapp','0001_squashed_0008_auto_20190126_0126','2019-02-22 05:40:54.704504'),(38,'resumeapp','0012_auto_20190226_0056','2019-02-26 00:56:52.214237');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,7 +293,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('k379xzune372bl9ldv44h1n5vod5k17l','YTFjNTI3YmY1M2JmOGZiNzA2MjI0M2NjMzRhODc4NTc4NTc0MjFhMzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTBjYjQ3ZWNhMmQ2OTk4MzJhN2RlZWFjYTExZjYxMjcwYzZiMWI0In0=','2019-03-08 06:55:07.134826'),('xloy3a9v73di8v8ej72hykp20dium8iz','MTc3MzQxNmM5ODZmY2IzOWFmY2NmMjc4ODFlODNmMjgzNDRiMGZmNjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5M2E0YzEyNzViMzkyYjhkYzNiNjg0N2Y4NzlhY2UzNWQ2N2ExZmM1In0=','2019-03-08 23:50:54.938601');
+INSERT INTO `django_session` VALUES ('i12pusd1ml9p2u8tod4cp7f7dch68ep5','ZTUxNGUxMWIwNDM0M2UxOTgxZDc4MjA5NTJiYTQ5MTYwZmE2NjZjMTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3M2Q2ZDQ5ODdjNzFkMGJhZmY2MTEyMWE2N2EzY2RmNTk2NmU4ZmJiIn0=','2019-03-12 00:40:35.580120'),('k379xzune372bl9ldv44h1n5vod5k17l','YTFjNTI3YmY1M2JmOGZiNzA2MjI0M2NjMzRhODc4NTc4NTc0MjFhMzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIxZTBjYjQ3ZWNhMmQ2OTk4MzJhN2RlZWFjYTExZjYxMjcwYzZiMWI0In0=','2019-03-08 06:55:07.134826'),('xloy3a9v73di8v8ej72hykp20dium8iz','MTc3MzQxNmM5ODZmY2IzOWFmY2NmMjc4ODFlODNmMjgzNDRiMGZmNjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI5M2E0YzEyNzViMzkyYjhkYzNiNjg0N2Y4NzlhY2UzNWQ2N2ExZmM1In0=','2019-03-08 23:50:54.938601');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -386,11 +386,11 @@ DROP TABLE IF EXISTS `resumeapp_project`;
 CREATE TABLE `resumeapp_project` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
   `github_link` varchar(255) NOT NULL,
   `image_url` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -399,7 +399,7 @@ CREATE TABLE `resumeapp_project` (
 
 LOCK TABLES `resumeapp_project` WRITE;
 /*!40000 ALTER TABLE `resumeapp_project` DISABLE KEYS */;
-INSERT INTO `resumeapp_project` VALUES (1,'Portfolio Website','In this project, I created a website to show off my programming experiences.','https://github.com/cake404/portfoliowebsite','https://i.imgur.com/9P13rqw.gif'),(2,'Game Engine','','https://github.com/cake404/GameEngine.git','https://i.imgur.com/F0Z3Af3.gif'),(3,'Space Invaders','','https://github.com/cake404/SpaceInvaders.git','https://i.imgur.com/ioD8sKe.gif');
+INSERT INTO `resumeapp_project` VALUES (1,'Portfolio Website','I created a website to learn more about web development and to show off my programming experiences. I used the Django framework (an MVC design pattern), and nginx as a web server/reverse proxy. A major goal of this project was to design and create a responsive and aesthetically pleasing website.','https://github.com/cake404/portfoliowebsite','https://i.imgur.com/9P13rqw.gif'),(2,'Game Engine','In this project, I created the lower level parts of a game engine using a drawing software tool called Processing. I used a hybrid component model in which game objects are given properties through Java classes.  An Observer/Observable design pattern was used for the managing events that occur within the game, and multi-threading was used to handle communication between the server and clients.','https://github.com/cake404/GameEngine.git','https://i.imgur.com/F0Z3Af3.gif'),(3,'Space Invaders','I implemented a short version of Space Invaders using the game engine that I created. It is written in Java and uses Processing in order draw elements on the screen. This project was a way to show off how the engine could be used to create simple games.','https://github.com/cake404/SpaceInvaders.git','https://i.imgur.com/ioD8sKe.gif'),(4,'IP Locator Website','This project was a exercise given to me during my internship at etailinsights. The goal of this project was to a create a website that is able to parse through a given IP access log and determine the location and HTTP response of clients that connected to a web server. Another requirement of this website was that it must be able to take IP addresses given by the user and determine their exact location. This website was written in PHP and used an MVC framework called Yii2.','https://github.com/cake404/IPLocatorWebsite.git','https://i.imgur.com/mStrlX0.gif');
 /*!40000 ALTER TABLE `resumeapp_project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,7 +419,7 @@ CREATE TABLE `resumeapp_project_technologies` (
   KEY `resumeapp_project_te_technology_id_6f525f7d_fk_resumeapp` (`technology_id`),
   CONSTRAINT `resumeapp_project_te_project_id_5d8e87c8_fk_resumeapp` FOREIGN KEY (`project_id`) REFERENCES `resumeapp_project` (`id`),
   CONSTRAINT `resumeapp_project_te_technology_id_6f525f7d_fk_resumeapp` FOREIGN KEY (`technology_id`) REFERENCES `resumeapp_technology` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -428,7 +428,7 @@ CREATE TABLE `resumeapp_project_technologies` (
 
 LOCK TABLES `resumeapp_project_technologies` WRITE;
 /*!40000 ALTER TABLE `resumeapp_project_technologies` DISABLE KEYS */;
-INSERT INTO `resumeapp_project_technologies` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,2,5),(6,2,6),(7,3,5),(8,3,6);
+INSERT INTO `resumeapp_project_technologies` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,2,5),(6,2,6),(7,3,5),(8,3,6),(10,4,3),(11,4,7),(9,4,8);
 /*!40000 ALTER TABLE `resumeapp_project_technologies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -470,7 +470,7 @@ CREATE TABLE `resumeapp_technology` (
   `tech_type` varchar(100) NOT NULL,
   `link` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -479,7 +479,7 @@ CREATE TABLE `resumeapp_technology` (
 
 LOCK TABLES `resumeapp_technology` WRITE;
 /*!40000 ALTER TABLE `resumeapp_technology` DISABLE KEYS */;
-INSERT INTO `resumeapp_technology` VALUES (1,'Python','Programming Language','https://www.python.org/'),(2,'Django','Web Framework','https://www.djangoproject.com/'),(3,'MySQL','Database management system','https://www.mysql.com/'),(4,'Nginx','Web Server/Reverse Proxy','https://www.nginx.com/'),(5,'Java','Programming Language','https://www.java.com/en/'),(6,'Processing','Software Sketching Tool','https://processing.org/');
+INSERT INTO `resumeapp_technology` VALUES (1,'Python','Programming Language','https://www.python.org/'),(2,'Django','Web Framework','https://www.djangoproject.com/'),(3,'MySQL','Database management system','https://www.mysql.com/'),(4,'Nginx','Web Server/Reverse Proxy','https://www.nginx.com/'),(5,'Java','Programming Language','https://www.java.com/en/'),(6,'Processing','Software Sketching Tool','https://processing.org/'),(7,'PHP','Programming Language','http://www.php.net/'),(8,'Yii2','Web Framework','https://www.yiiframework.com/');
 /*!40000 ALTER TABLE `resumeapp_technology` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -492,4 +492,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-25 23:33:30
+-- Dump completed on 2019-02-26  5:51:13
