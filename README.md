@@ -8,14 +8,10 @@ DEMO
 
 ![alt text](https://i.imgur.com/9P13rqw.gif)
 
-
-
 REQUIREMENTS
 ------------
 
 The minimum requirement by this project is that you have Python 3.5.6 or higher.
-
-
 
 INSTALLATION
 ------------
@@ -26,20 +22,11 @@ Install Python using a package manager:
 
 ```(Ubuntu 18.04 example) $ sudo apt-get install mysql-server```
 
-Or through the website:
-
-https://www.python.org/downloads/
-
-
 ### Install MySQL
 
 Install MySQL on you computer either through a package manager:
 
 ```(Ubuntu 18.04 example) $ sudo apt-get install mysql-server```
-
-Or through the MySQL website:
-
-https://dev.mysql.com/downloads/mysql/
 
 ### Install Python Packages
 
@@ -54,7 +41,6 @@ Run these commands to get the correct python packages:
 Install MySQL on you computer either through a package manager:
 
 ```(Ubuntu 18.04 example) $ sudo apt-get install nginx```
-
 
 CONFIGURATION
 -------------
@@ -96,8 +82,25 @@ Description=Portfoliowebsite gunicorn daemon
 [Service]
 Type=simple
 User=ubuntu
-ExecStart=/path/to/portfoliowebsite/config/gunicorn_start.sh
+ExecStart=/path/to/portfoliowebsite/config/gunicorn_start.sh <-- Edit this path
 
 [Install]
 WantedBy=multi-user.target
 ```
+
+### Bash File
+
+Rename the file `config/gunicorn_start.example.sh` to `config/gunicorn_start.sh` and then edit it so that it matches your specific environment
+
+Deployment
+----------
+
+### Start Nginx
+
+Restart Nginx by running this command:
+
+`sudo systemctl restart nginx`
+
+### Load/Run Gunicorn Service
+
+
