@@ -7,8 +7,8 @@ import json
 
 
 def IndexView(request):
-    project_list = Project.objects.all()
-    tech_know_list = TechnicalKnowledge.objects.all()
+    project_list = Project.objects.order_by('id').reverse()
+    tech_know_list = TechnicalKnowledge.objects.order_by('strength').reverse()
 
     return render(request, 'resumeapp/index.html', {'project_list': project_list, 
     'tech_know_list': tech_know_list, 'rating_range': [0.0, 1.0, 2.0, 3.0, 4.0]})

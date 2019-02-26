@@ -1,4 +1,7 @@
-/my.cnf
+/config/my.cnf
+/config/gunicorn_start.sh
 /static/admin/
 /static/resumeapp/
-*settings.py
+/portfoliowebsite/settings.py
+
+
